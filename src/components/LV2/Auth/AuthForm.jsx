@@ -34,14 +34,16 @@ const AuthForm = ({ type, schemaName }) => {
           className="h-[278.06px] w-[3px]"
           style={{ backgroundColor: theme.font }}
         />
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 ">
           <p
             style={{ color: theme.neutral100 }}
-            className="lg:text-[150px] text-[100px]"
+            className="lg:text-[150px] text-[100px] -mb-9"
           >
             CW
           </p>
-          <Text color="neutral100">Welcome to Filmland!</Text>
+          <Text color="neutral100" className="text-center">
+            Welcome to Filmland!
+          </Text>
         </div>
       </div>
       <form className="bg-black rounded-xl p-6 space-y-4 max-w-[401px]">

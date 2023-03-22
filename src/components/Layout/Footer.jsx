@@ -2,13 +2,13 @@ import React from "react";
 import { useTheme } from "styled-components";
 import { Image, Text } from "../LV1";
 
-const Footer = ({ fixed }) => {
+const Footer = () => {
   const theme = useTheme();
   // lg:fixed lg:bottom-0 lg:left-0 md:fixed md:bottom-0 md:left-0
   return (
     <footer
-      className={`mt-auto lg:flex justify-around items-center py-4 px-4 space-y-6 w-full z-[9999]  
-      ${fixed ? "" : "fixed left-0 bottom-0"}`}
+      className={`mt-auto lg:flex justify-around items-center py-4 px-4 space-y-6 w-full z-[9999] 
+      `}
       style={{ color: theme.font, backgroundColor: theme.footer }}
     >
       <div className="flex flex-col space-y-6 justify-center items-center lg:items-start">

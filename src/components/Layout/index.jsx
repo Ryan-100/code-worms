@@ -32,7 +32,7 @@ const Layout = ({
       </Head>
       <div className={`flex flex-col `}>
         <Header />
-        <main className="w-full flex-1 overflow-hidden">{children}</main>
+        <main className="w-full flex-1 overflow-hidden py-6">{children}</main>
         <Footer fixed={fixedFooter} />
       </div>
     </div>
