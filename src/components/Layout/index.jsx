@@ -1,9 +1,9 @@
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Footer from "./Footer";
 import Header from "./Header";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 const Layout = ({
   title = "Code Worms",
@@ -24,17 +24,27 @@ const Layout = ({
       setFixedFooter(false);
     }
   }, [router.pathname]);
+  const [footerHeight, setFooterHeight] = useState(0);
+
+  useEffect(() => {
+    const footerRef = document.querySelector("footer");
+    const height = footerRef.getBoundingClientRect().height;
+    setFooterHeight(height);
+  }, [footerHeight]);
   return (
     <div>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <div className={`flex flex-col `}>
-        <Header />
-        <main className="w-full flex-1 overflow-hidden py-6">{children}</main>
-        <Footer fixed={fixedFooter} />
-      </div>
+      <Header />
+      <main
+        className="w-full flex-1 overflow-x-hidden min-h-screen"
+        style={{ paddingBottom: footerHeight }}
+      >
+        {children}
+      </main>
+      <Footer fixed={fixedFooter} />
     </div>
   );
 };

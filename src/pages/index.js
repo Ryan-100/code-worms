@@ -9,7 +9,7 @@ export default function HomePage() {
     <>
       <Head>
         <title>Code Worms</title>
-        <meta name="description" content="job portal" />
+        <meta name="description" content="Movie Streaming Website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.svg" />
       </Head>
