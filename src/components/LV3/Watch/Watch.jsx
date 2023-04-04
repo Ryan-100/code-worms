@@ -26,6 +26,7 @@ const WatchMovie = ({ id }) => {
           src={"/images/poster.svg"}
           width={184}
           height={285}
+          unoptimized
           alt={video_info?.title}
           className="mx-auto"
         />

@@ -4,6 +4,7 @@ const nextConfig = {
   disableStaticImages: true,
   images: {
     domains: ['localhost'],
+    unoptimized:true,
   },
 }
 

@@ -35,6 +35,7 @@ const Home = () => {
       <div className="lg:flex lg:flex-row-reverse justify-around mx-4">
         <div className="flex items-center justify-center">
           <Image
+            unoptimized
             src={`http://localhost/CW_Streaming_Serivce_Backend/${latest_movies?.cover}`}
             width={672}
             height={346}
@@ -86,6 +87,7 @@ const Home = () => {
                         src={`http://localhost/CW_Streaming_Serivce_Backend/${el.cover}`}
                         width={170}
                         height={254}
+                        unoptimized
                         alt={el.title}
                       />
                     </div>

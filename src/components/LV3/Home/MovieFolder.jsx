@@ -27,6 +27,7 @@ const MovieFolder = ({ entity }) => {
                 >
                   <div className="w-full flex justify-center items-center">
                     <Image
+                    unoptimized
                       src={`http://localhost/CW_Streaming_Serivce_Backend/${el.cover}`}
                       width={170}
                       height={254}

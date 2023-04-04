@@ -29,7 +29,7 @@ const AllTvsFolder = ({ entity }) => {
                     <Image
                       src={`http://localhost/CW_Streaming_Serivce_Backend/${el.cover}`}
                       width={170}
-                      height={254}
+                      height={254}unoptimized
                       alt={el.title}
                     />
                   </div>
