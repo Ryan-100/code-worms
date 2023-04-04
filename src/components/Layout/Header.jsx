@@ -1,31 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Image, Text } from "../LV1";
 import { Button } from "../LV2/Button";
 import styled, { useTheme } from "styled-components";
-import { InputText } from "../LV2/Inputs";
 import { useForm } from "react-hook-form";
-import { Menu, MenuItem } from "@mui/material";
+import { getToken } from "@/service";
+import { useRef } from "react";
+import tw from "tailwind-styled-components";
+import { useSearchMoviesQuery } from "@/store/modules/videos/videoModule";
+import { useDispatch } from "react-redux";
+import { setVideoInfo } from "@/store/modules/videos/video-slice";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [searchParams, setSearchParams] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const handleClick = (event) => {
+  const inputRef = useRef();
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const pathname = router.pathname;
+  useEffect(() => {
+    if (window) {
+      const token = getToken();
+      setIsLoggedIn(token);
+    }
+  }, [pathname]);
+  const handleClick = () => {
     setOpen((p) => !p);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const router = useRouter();
   const theme = useTheme();
-  const {
-    handleSubmit,
-    control,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    mode: "onChange",
-  });
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setSearchParams(event.target.value);
+      // console.log(event.target.value);
+    }
+  };
+  const { data } = useSearchMoviesQuery(searchParams);
+  useEffect(() => {
+    dispatch(setVideoInfo(data));
+  }, [data]);
   return (
     <div className="flex justify-between lg:mx-6 mx-2 p-4">
       <div className="flex space-x-4 items-center">
@@ -37,14 +55,14 @@ const Header = () => {
         {isLoggedIn && (
           <>
             <Link
-              href="/watch"
+              href="/tvshows"
               style={{ color: theme.font }}
               className="pl-8 lg:text-[20px] md:text-[18px] text[14px]"
             >
               TV SHOW
             </Link>
             <Link
-              href="/watch"
+              href="/movies"
               style={{ color: theme.font }}
               className=" lg:text-[20px] md:text-[18px] text[14px]"
             >
@@ -59,12 +77,11 @@ const Header = () => {
       {isLoggedIn && (
         <>
           <div className="md:flex hidden items-center space-x-2">
-            <InputText
-              control={control}
+            <SearchInput
+              ref={inputRef}
+              onKeyDown={handleKeyDown}
               placeholder="Search Movies and shows here!"
-              name="search"
-              border
-              width="370"
+              width={370}
             />
             <Image
               imageType="user"
@@ -116,11 +133,7 @@ const Header = () => {
       )}
       {!isLoggedIn && (
         <div className="flex space-x-4">
-          <Button
-            style={{ width: "72px", height: "30px" }}
-            href="/login"
-            onClick={() => setIsLoggedIn(true)}
-          >
+          <Button style={{ width: "72px", height: "30px" }} href="/login">
             Login
           </Button>
           <Button variant="ghost" href="/aboutUs">
@@ -140,4 +153,9 @@ const MenuText = styled(Text)`
   :hover {
     color: ${(props) => props.theme.primary};
   }
+`;
+
+export const SearchInput = tw.input`
+form-control  block  w-full  px-3  py-2.5  text-base font-normal  text-white bg-gray-900  bg-clip-padding   order-solid   transition  ease-in-out  m-0  focus:text-white focus:border-blue-600 focus:outline-none 
+lg:text-[14px] text-xs rounded-full 
 `;

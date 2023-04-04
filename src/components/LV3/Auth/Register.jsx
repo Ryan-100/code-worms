@@ -3,8 +3,10 @@ import * as yup from "yup";
 import AuthForm from "@/components/LV2/Auth/AuthForm";
 
 const signUpSchema = yup.object().shape({
+  first_name: yup.string().required("Enter your first name"),
+  last_name: yup.string().required("Enter your last name"),
   email: yup.string().required("Enter your email").email("Not a proper email!"),
-  name: yup.string().required("Enter your name"),
+  username: yup.string().required("Enter your username"),
   password: yup
     .string()
     .required("Enter your password")

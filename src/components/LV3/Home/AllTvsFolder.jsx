@@ -6,16 +6,16 @@ import { Swiper } from "@/components/LV2/Swiper";
 import Section from "./section-container/Section";
 import { useRouter } from "next/router";
 
-const MovieFolder = ({ entity }) => {
+const AllTvsFolder = ({ entity }) => {
   const router = useRouter();
   // w-[65px] sm:w-[80px] md:w-[110px] lg:w-[135px] h-[65px] xs:h-[80px] sm:h-[103px]
   return (
     <Section title={entity?.name}>
       {/* <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 place-content-center gap-6"> */}
       <div className="w-screen overflow-hidden">
-        <Swiper slidesPerView={1} className="swiper-container">
-          {entity?.entities?.length > 0 &&
-            entity.entities.map((el, index) => (
+        <Swiper slidesPerView={5} className="swiper-container">
+          {entity?.tvshows?.length > 0 &&
+            entity.tvshows.map((el, index) => (
               <SwiperSlide
                 onClick={() => router.push(`/watch/${el.id}`)}
                 key={index}
@@ -45,4 +45,4 @@ const MovieFolder = ({ entity }) => {
   );
 };
 
-export default MovieFolder;
+export default AllTvsFolder;

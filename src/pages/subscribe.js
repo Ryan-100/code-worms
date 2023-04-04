@@ -1,14 +1,14 @@
 import React from 'react'
-import Main from '@/components/LV3/Watch/Main'
+import AboutUs from '@/components/LV3/AboutUs/AboutUs'
 import PrivateRoute from '@/service/Auth'
 
-const index = () => {
+const Subscribe = () => {
   return (
     <PrivateRoute>
 
-      <Main/>
+    <AboutUs/>
     </PrivateRoute>
   )
 }
 
-export default index
+export default Subscribe

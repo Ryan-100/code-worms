@@ -1,12 +1,13 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Home from "@/components/LV3/Home/Home";
+import PrivateRoute from "@/service/Auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function HomePage() {
   return (
-    <>
+    <PrivateRoute>
       <Head>
         <title>Code Worms</title>
         <meta name="description" content="Movie Streaming Website" />
@@ -17,6 +18,6 @@ export default function HomePage() {
       <main className="max-w-screen min-h-screen">
         <Home />
       </main>
-    </>
+    </PrivateRoute>
   );
 }

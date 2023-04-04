@@ -8,6 +8,11 @@ import { CheckBox, InputText } from "../Inputs";
 import { Button } from "@/components/LV2/Button";
 import Link from "next/link";
 import { useTheme } from "styled-components";
+import {
+  useLoginMutation,
+  useRegisterMutation,
+} from "@/store/modules/auth/authModule";
+import { setRememberMe, setToken } from "@/service";
 
 const AuthForm = ({ type, schemaName }) => {
   const [showPass, setShowPass] = useState(false);
@@ -17,14 +22,43 @@ const AuthForm = ({ type, schemaName }) => {
   const {
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(schemaName),
   });
 
+  const [login, { isLoading, isError }] = useLoginMutation(); // login
+  const [register] = useRegisterMutation(); // register
+
   const handleTogglePass = () => {
     setShowPass(!showPass);
+  };
+
+  const onSubmit = async (data) => {
+    if (type === "login") {
+      const res = await login({ email: data.email, password: data.password });
+      console.log(res, data, "res login");
+      if (res?.data?.token) {
+        setRememberMe(true);
+        setToken({
+          cw_token: res?.data?.token,
+        });
+        router.push("/");
+      }
+    }
+    if (type === "register") {
+      const res = await register({
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        username: data.username,
+        password: data.password,
+      });
+      console.log(res, "res register");
+      router.push("/login");
+    }
+    console.log(data, "data");
   };
   return (
     <div className="flex lg:flex-row-reverse flex-col-reverse items-center justify-center lg:space-x-reverse lg:space-x-60 m-4">
@@ -46,7 +80,10 @@ const AuthForm = ({ type, schemaName }) => {
           </Text>
         </div>
       </div>
-      <form className="bg-black rounded-xl p-6 space-y-4 max-w-[401px]">
+      <form
+        className="bg-black rounded-xl p-6 space-y-4 max-w-[401px]"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Text color="neutral100" size="lg" className="-my-2">
           {type === "login" ? "Sign In" : "Create Your account"}
         </Text>
@@ -121,7 +158,7 @@ const AuthForm = ({ type, schemaName }) => {
             <div className="flex justify-between space-x-6">
               <CheckBox label="Remember Me" name="remember" control={control} />
               <Link
-                href="/"
+                href="/resetPass"
                 style={{ color: theme.font }}
                 className="text-xs lg:text-[14px]"
               >

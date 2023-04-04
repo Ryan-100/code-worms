@@ -1,9 +1,9 @@
-import AboutUs from '@/components/LV3/AboutUs/AboutUs'
 import React from 'react'
+import AboutUsUI from '@/components/LV3/AboutUs/AboutUsUI'
 
 const ChoosePlan = () => {
   return (
-    <AboutUs/>
+    <AboutUsUI/>
   )
 }
 

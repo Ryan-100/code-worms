@@ -62,7 +62,7 @@ export const InputText = ({
         ref={ref}
         border={border ? true : false}
         disabled={disabled}
-        style={{ color: disabled ? "gray" : "black" }}
+        style={{ color: disabled ? "gray" : "white" }}
       />
       <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
         <p className="text-slate-500">{endPrefix}</p>
@@ -77,7 +77,7 @@ export const InputText = ({
 
 const InputStyled = styled.input`
   input {
-    color: white;
+    color: "#fff";
   }
   input:disabled {
     color: gray;
@@ -85,7 +85,7 @@ const InputStyled = styled.input`
 `;
 
 const StyledInput = tw(InputStyled)`
-form-control  block  w-full  px-3  py-2.5  text-base font-normal  text-gray-700 bg-gray-900  bg-clip-padding   order-solid   transition  ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none 
+form-control  block  w-full  px-3  py-2.5  text-base font-normal  text-gray-700 bg-gray-900  bg-clip-padding   order-solid   transition  ease-in-out  m-0  focus:text-gray-700 focus:border-blue-600 focus:outline-none 
 lg:text-[14px] text-xs ${(props) =>
   props.disabled ? "lg:text-slate-500" : "text-gray-400"}
 ${(props) => (props.error ? "border-red-500" : "")} 

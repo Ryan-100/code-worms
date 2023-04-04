@@ -17,6 +17,7 @@ const Layout = ({
     if (
       router.pathname === "/" ||
       router.pathname === "/watch" ||
+      router.pathname === "/aboutUs" ||
       router.pathname.split("/")[1] === "watch"
     ) {
       setFixedFooter(true);

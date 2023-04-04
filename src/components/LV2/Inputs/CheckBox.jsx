@@ -24,7 +24,8 @@ export const CheckBox = ({ label, name, control }) => {
           <input
             type="checkbox"
             id={id}
-            checked={value}
+            checked={true}
+            disabled={true}
             onChange={onChange}
             className="form-checkbox h-5 w-5 text-teal-600 border-gray-300 rounded focus:ring-teal-500 bg-black"
           />

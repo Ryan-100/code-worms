@@ -22,7 +22,10 @@ const Landing = () => {
         <Text color="neutral100">
           “Discover new worlds and escape into your favorite stories."
         </Text>
-        <Button className="lg:w-[247px] lg:h-[54px] w-[120px] h-[34px]">
+        <Button
+          className="lg:w-[247px] lg:h-[54px] w-[120px] h-[34px]"
+          href="/login"
+        >
           <p className="lg:text-[22px] text-[14px]">Get Started</p>
         </Button>
       </div>

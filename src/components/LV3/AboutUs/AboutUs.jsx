@@ -3,8 +3,19 @@ import { Image, Text } from "@/components/LV1";
 import { Button } from "@/components/LV2/Button";
 import styled, { useTheme } from "styled-components";
 import tw from "tailwind-styled-components";
+import { useSubscribeMutation } from "@/store/modules/activity/activityModule";
+import { useRouter } from "next/router";
 
 const AboutUs = () => {
+  const router = useRouter();
+  const [subscribe] = useSubscribeMutation();
+  const subscribeHandler = async () => {
+    const res = await subscribe();
+    console.log(res, "res sub");
+    if (res?.data?.success) {
+      router.push("/setUp");
+    }
+  };
   const theme = useTheme();
   return (
     <div className="w-full" style={{ color: theme.font }}>
@@ -37,7 +48,7 @@ const AboutUs = () => {
             <Image imageType="coin" />
             <StyledText>$ 5 /month</StyledText>
           </div>
-          <Button>Subscribe</Button>
+          <Button onClick={() => subscribeHandler()}>Subscribe</Button>
         </div>
         <div className="bg-opacity-30 bg-black rounded-xl flex flex-col items-center px-4 pt-2 lg:min-w-[320px] min-w-[320px] max-w-[320px] space-y-6 lg:pb-14 pb-6">
           <HeadText size="xl" weight="lg">
@@ -59,7 +70,7 @@ const AboutUs = () => {
             <Image imageType="coin" />
             <StyledText>$ 10 /month</StyledText>
           </div>
-          <Button>Subscribe</Button>
+          <Button onClick={() => subscribeHandler()}>Subscribe</Button>
         </div>
         <div className="bg-opacity-30 bg-black rounded-xl flex flex-col items-center px-4 pt-2 lg:min-w-[320px] min-w-[320px] max-w-[320px] space-y-6 lg:pb-8 pb-6">
           <HeadText size="xl" weight="lg">
@@ -81,7 +92,7 @@ const AboutUs = () => {
             <Image imageType="coin" />
             <StyledText>$ 15 /month</StyledText>
           </div>
-          <Button>Subscribe</Button>
+          <Button onClick={() => subscribeHandler()}>Subscribe</Button>
         </div>
       </div>
     </div>
