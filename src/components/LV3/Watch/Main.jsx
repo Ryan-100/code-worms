@@ -25,7 +25,7 @@ const Main = ({ videos }) => {
   const { data } = useSearchMoviesQuery(searchParams);
   console.log(data, "searched data");
   return (
-    <div>
+    <div className="w-full">
       <div className="md:hidden">
         <SearchInput
           ref={inputRef}

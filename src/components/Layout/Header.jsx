@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { Image, Text } from "../LV1";
 import { Button } from "../LV2/Button";
 import styled, { useTheme } from "styled-components";
-import { useForm } from "react-hook-form";
 import { getToken } from "@/service";
 import { useRef } from "react";
 import tw from "tailwind-styled-components";
@@ -68,7 +67,10 @@ const Header = () => {
             >
               MOVIE
             </Link>
-            <div className="sm:block hidden">
+            <div
+              className="sm:block hidden cursor-pointer"
+              onClick={() => router.push("/saved")}
+            >
               <Image imageType="saved" width="25" height="25" />
             </div>
           </>
@@ -120,7 +122,7 @@ const Header = () => {
                 </MenuText>
                 <MenuText
                   onClick={() => {
-                    router.push("/watch");
+                    router.push("/saved");
                     handleClose();
                   }}
                 >

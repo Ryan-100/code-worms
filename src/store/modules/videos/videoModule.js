@@ -18,6 +18,11 @@ export const VideoSlice = apiSlice.injectEndpoints({
           return "GET_alltvshows.php";
         },
       }),
+      getWatchlists: builder.query({
+        query() {
+          return "GET_watchlist.php";
+        },
+      }),
       getLatest: builder.query({
         query() {
           return "latest_movie.php";
@@ -30,7 +35,7 @@ export const VideoSlice = apiSlice.injectEndpoints({
       }),
       getVideoInfo: builder.query({
         query(id) {
-          return `GET_VideoInfo.php?id=${19}`;
+          return `GET_VideoInfo.php?id=${id}`;
         },
       }),
       searchMovies:builder.query({
@@ -43,5 +48,5 @@ export const VideoSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-useGetAllMoviesQuery,useGetAllTVsQuery,useGetEntitiesQuery,useGetLatestQuery,useGetRecentlyQuery,useGetVideoInfoQuery,useSearchMoviesQuery
+useGetAllMoviesQuery,useGetAllTVsQuery,useGetWatchlistsQuery,useGetEntitiesQuery,useGetLatestQuery,useGetRecentlyQuery,useGetVideoInfoQuery,useSearchMoviesQuery
 } = VideoSlice;

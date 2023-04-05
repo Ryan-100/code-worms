@@ -17,6 +17,8 @@ const Layout = ({
     if (
       router.pathname === "/" ||
       router.pathname === "/watch" ||
+      router.pathname === "/movies" ||
+      router.pathname === "/tvshows" ||
       router.pathname === "/aboutUs" ||
       router.pathname.split("/")[1] === "watch"
     ) {

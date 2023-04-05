@@ -23,7 +23,7 @@ const Tvs = ({ videos }) => {
   const router = useRouter();
   const { data } = useSearchMoviesQuery(searchParams);
   return (
-    <div>
+    <div className="w-full">
       <div className="md:hidden">
         <SearchInput
           ref={inputRef}
