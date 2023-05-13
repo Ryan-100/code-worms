@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Since backend data is not hosted, you will not see the true photos in the website.
+As a front-end position developer, you can see the mobile responsives and Next.Js usage in here https://code-worms-streaming.vercel.app
+
 ## Getting Started
 
 First, run the development server:
